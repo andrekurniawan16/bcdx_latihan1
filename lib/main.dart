@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text("Latihan 1"),
-          backgroundColor: Colors.amber,
+          backgroundColor: Colors.red[300],
         ),
         body: Column(
           children: [
@@ -23,12 +23,105 @@ class MyApp extends StatelessWidget {
             Text("Hello world"),
             Row(
               children: [
-                Text("data 1"),
+                Text("data 1 "),
                 Text("data 2 "),
                 Text("data 3 "),
                 Text("data 4 "),
               ],
             ),
+            Container(
+              height: 40,
+              width: 900,
+              color: Colors.greenAccent,
+            ),
+
+            SizedBox(
+              height: 10,
+            ),
+             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+              height: 40,
+              width: 40,
+              color: Colors.orange[400],
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              color: Colors.orange[400],
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              color: Colors.orange[400],
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              color: Colors.orange[400],
+            ),
+              ],
+             ),
+
+             SizedBox(
+              height: 10,
+            ),
+             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Colors.orange[400],
+                shape: BoxShape.circle,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Colors.orange[400],
+                shape: BoxShape.circle,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Colors.orange[400],
+                shape: BoxShape.circle,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Colors.orange[400],
+                shape: BoxShape.circle,
+              ),
+            ),
+              ],
+             )
           ],
         ),
       ),
