@@ -4,135 +4,124 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: formInput(),
-    );
-  }
-}
-
-class formInput extends StatefulWidget {
-  const formInput({super.key});
-
-  @override
-  State<formInput> createState() => _formInputState();
-}
-
-class _formInputState extends State<formInput> {
-
-  String? _jk;
-  void pilihJk (String value) {
-    setState(() {
-      _jk = value;
-    });
-  }
-
-  List<String> agama = [
-    "Islam",
-    "Kristen Khatolik",
-    "Kristen Protestann",
-    "Hindu",
-    "Budha",
-    "Lainnya"
-  ];
-
-  String _agama = "Islam";
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Icon(Icons.list),
-        title: Text("Input Biodata"),
-        backgroundColor: Colors.teal,
-      ),
-      body: Container(
-        padding: EdgeInsets.all(10),
-        child: ListView(
+      title: "Latihan 1",
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Latihan 1"),
+          backgroundColor: Colors.red[300],
+        ),
+        body: Column(
           children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Nama Lengkap",
-                labelText: "Nama Lengkap",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
+            Text("Hello world"),
+            Text("Hello world"),
+            Text("Hello world"),
+            Row(
+              children: [
+                Text("data 1 "),
+                Text("data 2 "),
+                Text("data 3 "),
+                Text("data 4 "),
+              ],
             ),
-            SizedBox(
-              height: 10,
+            Container(
+              height: 40,
+              width: 900,
+              color: Colors.greenAccent,
             ),
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: "Password",
-                labelText: "Password",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            TextField(
-              maxLength: 100,
-              maxLines: 3,
-              decoration: InputDecoration(
-                hintText: "Alamat",
-                labelText: "Alamat",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            RadioListTile(
-              value: "Laki-laki", 
-              groupValue: _jk,
-              title: Text("Laki-laki"), 
-              onChanged: (String? value){
-                pilihJk(value!);
-              },
-              activeColor: Colors.cyan,
-              subtitle: Text("Pilih ini Laki-laki"),
-              ),
 
-              RadioListTile(
-              value: "Perempuan", 
-              groupValue: _jk,
-              title: Text("Perempuan"), 
-              onChanged: (String? value){
-                pilihJk(value!);
-              },
-              activeColor: Colors.cyan,
-              subtitle: Text("Pilih ini Perempuan"),
-              ),
+            SizedBox(
+              height: 10,
+            ),
+             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+              height: 40,
+              width: 40,
+              color: Colors.orange[400],
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              color: Colors.orange[400],
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              color: Colors.orange[400],
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              color: Colors.orange[400],
+            ),
+              ],
+             ),
 
-              DropdownButton<String>(
-                value: _agama,
-                items: agama.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                    );
-                }).toList(), 
-                onChanged: (String? newValue) {
-                  setState(() {
-                    _agama = newValue!;
-                  });
-                }),
+             SizedBox(
+              height: 10,
+            ),
+             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Colors.orange[400],
+                shape: BoxShape.circle,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Colors.orange[400],
+                shape: BoxShape.circle,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Colors.orange[400],
+                shape: BoxShape.circle,
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Container(
+              height: 40,
+              width: 40,
+              decoration: BoxDecoration(
+                color: Colors.orange[400],
+                shape: BoxShape.circle,
+              ),
+            ),
+              ],
+             )
           ],
         ),
       ),

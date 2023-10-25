@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,9 +29,10 @@ class formInput extends StatefulWidget {
 }
 
 class _formInputState extends State<formInput> {
+  TextEditingController var_tanggal = TextEditingController();
 
   String? _jk;
-  void pilihJk (String value) {
+  void pilihJk(String value) {
     setState(() {
       _jk = value;
     });
@@ -39,13 +41,48 @@ class _formInputState extends State<formInput> {
   List<String> agama = [
     "Islam",
     "Kristen Khatolik",
-    "Kristen Protestann",
+    "Kristen Protestan",
     "Hindu",
     "Budha",
     "Lainnya"
   ];
 
   String _agama = "Islam";
+
+  void dispose() {
+    var_tanggal.dispose();
+    super.dispose();
+  }
+
+  String formatDate(DateTime date) {
+    return DateFormat('dd/MM/yyyy').format(date);
+  }
+
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate,
+        firstDate: DateTime(2015, 8),
+        lastDate: DateTime(2101),
+        builder: (BuildContext context, Widget? child) {
+          return Theme(
+            data: ThemeData.light().copyWith(
+              primaryColor: Colors.teal,
+              hintColor: Colors.teal,
+              colorScheme: ColorScheme.light(primary: Colors.teal),
+            ),
+            child: child!,
+          );
+        });
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+        var_tanggal.text = formatDate(selectedDate).toString();
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -99,40 +136,56 @@ class _formInputState extends State<formInput> {
               height: 10,
             ),
             RadioListTile(
-              value: "Laki-laki", 
+              value: "Laki-Laki",
               groupValue: _jk,
-              title: Text("Laki-laki"), 
-              onChanged: (String? value){
+              title: Text("Laki-Laki"),
+              onChanged: (String? value) {
                 pilihJk(value!);
               },
-              activeColor: Colors.cyan,
-              subtitle: Text("Pilih ini Laki-laki"),
-              ),
-
-              RadioListTile(
-              value: "Perempuan", 
+              activeColor: Colors.teal,
+              subtitle: Text("Pilih ini laki-laki"),
+            ),
+            RadioListTile(
+              value: "Perempuan",
               groupValue: _jk,
-              title: Text("Perempuan"), 
-              onChanged: (String? value){
+              title: Text("Perempuan"),
+              onChanged: (String? value) {
                 pilihJk(value!);
               },
-              activeColor: Colors.cyan,
-              subtitle: Text("Pilih ini Perempuan"),
-              ),
-
-              DropdownButton<String>(
-                value: _agama,
-                items: agama.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                    );
-                }).toList(), 
-                onChanged: (String? newValue) {
-                  setState(() {
-                    _agama = newValue!;
-                  });
-                }),
+              activeColor: Colors.teal,
+              subtitle: Text("Pilih ini perempuan"),
+            ),
+            DropdownButton<String>(
+              value: _agama,
+              items: agama.map((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+              onChanged: (String? newValue) {
+                setState(() {
+                  _agama = newValue!;
+                });
+              },
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              controller: var_tanggal,
+              readOnly: true,
+              decoration: InputDecoration(
+                  hintText: "Tanggal Lahir",
+                  labelText: "Tanggal Lahir",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  suffixIcon: IconButton(
+                    onPressed: () => _selectDate(context),
+                    icon: Icon(Icons.calendar_today),
+                  )),
+            ),
           ],
         ),
       ),
